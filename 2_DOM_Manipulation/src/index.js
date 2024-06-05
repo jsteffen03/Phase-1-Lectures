@@ -80,30 +80,165 @@ const bookStore = {
 }
 
 //array methods
+
+const arr = ["Apple", "Orange", "Pomegranate"]
+
 //push adds to the end
+
+arr.push("Watermelon")
+//console.log(arr)
+
 //unshift adds to the start
+
+arr.unshift("Strawberry")
+//console.log(arr)
+
 //spread operator copies the array
+
+const newArr = [...arr]
+
+newArr.push("Grape")
+
+//console.log(newArr)
+
 //shift removes the first element
+
+const firstItem = arr.shift()
+//console.log(firstItem)
+
 //pop removes the last element
+
+const lastItem = arr.pop()
+//console.log(lastItem)
+
+//console.log(arr)
+
 //slice changes the array to between two indices
+
+//console.log(newArr.slice(1,3))
+//console.log(newArr)
+
 //splice returns the above but keeps the the original
 
+//console.log(newArr.splice(2,2))
+//console.log(newArr)
+
+// .forEach
+/*
+console.log(bookStore.inventory)
+bookStore.inventory.forEach((book)=>{
+    console.log(book.reviews[0])
+})
+
+console.log(bookStore.inventory)
+
+bookStore.inventory.forEach((book)=>{
+    console.log(book.author)
+})
+
+function addPrice(book){
+    book.price += 1
+}
+
+bookStore.inventory.forEach(addPrice)
+
+console.log(bookStore.inventory)
+
+
+const mapReturn = bookStore.inventory.map((book)=>{
+    return book.price
+})
+*/
+//console.log(mapReturn)
+
 // Lets Create a .querySelector()!
+
+
+
+const byId = document.querySelector("#removable")
+byId.remove()
+const byClass = document.querySelector(".list")
+//console.log(byClass)
+
 // .getElementById
 // .getElementsByClassName()
 // Use .querySelectorAll to get all divs!
+
+const allDivs = document.querySelectorAll("div")
+//console.log(allDivs)
+
 // We can then use .textcontent to change whats inside!
-// Using .createElement we can create and set a new html element!
+
+
+
+
 
 // Lets use .remove on a queryselector!
+
+
+
 // And lets clear the children using inner html!
+
+const bookList = document.querySelector("#book-list")
+bookList.innerHTML = ""
+
+// Using .createElement we can create and set a new html element!
+
+
 
 
 //* Create a function that uses a selector to get the header and add the bookStore name as its text content
 
+function addHeader(){
+    const firstH2 = document.querySelector("div header div h2")
+    firstH2.textContent = bookStore.address
+    const h1 = document.createElement("h1")
+    h1.textContent = bookStore.name
+
+    const headerDiv = document.querySelector("#header header div")
+    console.log(headerDiv)
+    headerDiv.append(h1)
+}
+
+addHeader()
 //* Create a function that grabs all the divs form the footer and add the book store name, address, hours and/or phone number
 
+function addFooter(){
+    const footer = document.querySelector("footer")
+    const hours = document.createElement("h2")
+    const splitter = document.createElement("h2")
+    const phone = document.createElement("h2")
+    
+    hours.textContent = bookStore.hours
+    splitter.textContent = ("---")
+    phone.textContent = bookStore.number
+
+
+    footer.append(hours,phone)
+}
+
+addFooter()
+
+
 // use a forEach to iterate over BookStore inventory.
+
+bookStore.inventory.forEach((book)=>{
+    const bookList = document.querySelector("#book-list")
+    const li = document.createElement("div")
+    const title = document.createElement("h3")
+    const auth = document.createElement("p")
+    const price = document.createElement("p")
+    const image = document.createElement("img")
+
+    title.textContent = book.title
+    title.className = "some_class"
+    auth.textContent = book.author
+    price.textContent = book.price
+    image.src = book.imageUrl
+    li.append(title,auth,price,image)
+    bookList.append(li)
+})
+
 // create li, an h3 tag, 2 p tags, and image tag.
 // Add the cardData content to the tags.
 // Append all elements to our li

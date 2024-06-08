@@ -69,30 +69,72 @@ const inventory = [
   }
 ]
 
-// Pre Work Questions?
+// Function Declaration! All functions are hoisted to the top the code, can be accessed anytime
+const day = "Monday" // Const is a constant variable, type error will throw if trying to reassign variable
+const x = 25 // can be a string, number, or function
+let day2 = "Tuesday" // let variables can be re-assigned
 
+function sayHi(){ // function 
+    console.log("Hello")
+}
+sayHi()// Calling the function
 
-// Function Declaration!
+function showPrice(book){  //shows a function with a parameter, accessing the data above by calling the function with the parameter //showPrice(inventory[3])
+    console.log(book.price)
+}
+/*
+Anonomous Functions? Another way to write functions!  !!!Anonomous functions are not hoisted!!!
+Anonomous Functions  No Name: An anonymous function does not have a name after the "function" keyword.
+Assigned to Variables: Often, anonymous functions are assigned to variables. This allows the function to be called using the variable name.
+Passed as Arguments: Anonymous functions can be passed as arguments to other functions, especially useful in callbacks.
+*/
+let numbers = [1, 2, 3, 4, 5];
+let doubled = numbers.map(function(number) {
+    return number * 2;
+});
+console.log(doubled); // Output: [2, 4, 6, 8, 10]
+/*
+Used in IIFE: Immediately Invoked Function Expressions are often anonymous. They are executed right after their definition.
+*/
+(function() {
+    console.log("This function runs immediately!");
+})();
 
-// Now lets call the function
-
-// Lets make a function with a parameter
-// Using the data above what sort of function can we create?
-
-// Anonomous Functions? Another way to write functions!
-// Whats the difference? It comes down to where it is called
-
+const subtract = function(num1,num2){  // Anonomous functions are assigned a variable before the function  
+    return num1-num2 // to get data out of a function, return the data that you want 
+}
 
 // Arrow Functions
-// Arrow functions vs regular functions vs anonomous functions????
-// Lets refactor the regular function above to be an arrow function!
+//Allow you to write shorter function expressions, a faster way to type a function, can also be used in other functions with out needed to be called
 
-// Now you try it!
+let arrowFunction = (parameter) => {
+    return (`this is an arrow function ${parameter}`)
+}
 
 // Scoping
-// Global Scope
-// Function Scope
-// Block Scope (If, else, for, while)
+// Global Scope // Can be access everywgere
+console.log(inventory)
+const globalVar = "global"
+// Function Scope 
+function scopeTesting(var1){    //Variables in the function can be accessed only in the function, 
+    console.log(var1)
+    const funcScope = "Function"
+    console.log(x)
+    console.log(globalVar)
+    if (true){      // if statements check if something is true and then runs the function below
+        const blockScope = "Block"
+        console.log(globalVar)
+        console.log(blockScope)
+        console.log(funcScope)
+    } else // can also do an else If with another check if something is true
+    function nestedFunc(){ // things in the else are not accessed in the if statement
+        const nested = "Nested"
+        console.log(nested)
+    }
+    nestedFunc()
+}
 
-// Callback Functions, calling a function in a function
+scopeTesting("Testing Function Scope")
+console.log(x)
+
 
